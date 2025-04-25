@@ -9,11 +9,11 @@ class View(ft.UserControl):
 
         self._txtOut = None
         self._page = page
-        self._page.title = "TdP 2024 - Insurance Unit"
+        self._page.title = "TdP 2025 - Insurance Unit"
         self._page.horizontal_alignment = 'CENTER'
         self._page.theme_mode = ft.ThemeMode.LIGHT
         page.window_width = 1000  # window's width is 200 px
-        page.window_height = 1000
+        page.window_height = 750
         page.window_center()
         # controller (it is not initialized. Must be initialized in the main, after the controller is created)
         self._controller = None
@@ -31,7 +31,7 @@ class View(ft.UserControl):
 
     def load_interface(self):
         # title
-        self._title = ft.Text("TdP 2024 - Insurance Unit", color="blue", size=24)
+        self._title = ft.Text("TdP 2025 - Insurance Unit", color="blue", size=24)
         self._page.controls.append(self._title)
 
         # ROW with controls

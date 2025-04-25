@@ -11,10 +11,24 @@ class Controller:
         self._model = model
         self._idMap = {}
         self.fillIDMap()
+        self.anno = None
+        self.ore = None
 
     def handleWorstCase(self, e):
-        # TO FILL
-        pass
+        nerc = self._idMap[self._view._ddNerc.value]
+        maxY = self._view._txtYears.value
+        maxH = self._view._txtHours.value
+        self._model.worstCase(nerc, int(maxY), int(maxH))
+
+        self._view._txtOut.controls.clear()
+        self._view._txtOut.controls.append(
+            ft.Text(f"Tot people affected: {self._model.calcola_tot_persone(self._model._solBest)}"))
+        self._view._txtOut.controls.append(
+            ft.Text(f"Tot hours of outage: {self._model.sumDurata(self._model._solBest) / 60 / 60}"))
+
+        for v in self._model._solBest:
+            self._view._txtOut.controls.append(ft.Text(f"{v}"))
+        self._view.update_page()
 
     def fillDD(self):
         nercList = self._model.listNerc
